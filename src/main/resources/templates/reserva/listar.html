@@ -11,37 +11,41 @@
 </head>
 
 <body>
-	
+
 	<nav th:replace="./layout/plantilla :: navbar" />
 
-	<h1>Listar Reservas</h1>
+	<div class="container mt-5">
+		<h1 class="mb-4">Listar Reservas</h1>
 
-	<table border="1">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Cliente</th>
-				<th>Hotel</th>
-				<th>Fecha Inicio</th>
-				<th>Fecha Fin</th>
-				<th>Acciones</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="reserva: ${reservas}">
-				<td th:text="${reserva.id}"></td>
-				<td th:text="${reserva.cliente.nombre}"></td>
-				<td th:text="${reserva.hotel.nombre}"></td>
-				<td th:text="${reserva.fechaInicio}"></td>
-				<td th:text="${reserva.fechaFin}"></td>
-				<td>
-					<a th:href="@{/reservas/{id}(id=${reserva.id})}">Ver</a>
-					<a th:href="@{/reservas/transferir/{id}(id=${reserva.id})}">Transferir</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<a href="/reservas/nueva" class="btn btn-primary my-3" >Crear nueva reserva</a>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Cliente</th>
+					<th>Hotel</th>
+					<th>Fecha Inicio</th>
+					<th>Fecha Fin</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="reserva: ${reservas}">
+					<td th:text="${reserva.id}"></td>
+					<td th:text="${reserva.cliente.nombre}"></td>
+					<td th:text="${reserva.hotel.nombre}"></td>
+					<td th:text="${reserva.fechaInicio}"></td>
+					<td th:text="${reserva.fechaFin}"></td>
+					<td>
+						<a th:href="@{/reservas/{id}(id=${reserva.id})}" class="btn btn-info btn-sm">Ver</a>
+						<a th:href="@{/reservas/transferir/{id}(id=${reserva.id})}"
+							class="btn btn-warning btn-sm">Transferir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="/reservas/nueva" class="btn btn-primary mt-3">Crear nueva reserva</a>
+	</div>
 
 
 	<!-- Bootstrap JS and dependencies -->

@@ -11,23 +11,28 @@
 </head>
 
 <body>
-	
+
 	<nav th:replace="./layout/plantilla :: navbar" />
 
-	<h1>Transferir Reservas</h1>
-	
-	<form th:action="@{/reservas/transferir}"  method="post">
-		<input type="hidden" th:value="${reserva.id}" name="idReserva" />
-		<div>
-			<label for="clienteDestino">Cliente:</label>
-			<select id="clienteDestino" name="clienteDestino">
-				<option th:each="cliente: ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}">
-				</option>
-			</select>
-		</div>
-		<input type="submit" class="btn btn-primary" value="Transferir" />
-	</form>
+	<div class="container container_crear_clientes mt-5">
+		<h1 class="mb-4 text-dark">Transferir Reserva</h1>
 
+		<form th:action="@{/reservas/transferir}" method="post">
+			<input type="hidden" th:value="${reserva.id}" name="idReserva" />
+
+			<div class="form-group">
+				<label for="clienteDestino" class="text-dark">Cliente Destino:</label>
+				<select id="clienteDestino" name="clienteDestino" class="form-control">
+					<option th:each="cliente: ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}">
+					</option>
+				</select>
+			</div>
+
+			<div>
+				<input type="submit" class="btn btn-primary" value="Transferir" />
+			</div>
+		</form>
+	</div>
 
 
 	<!-- Bootstrap JS and dependencies -->
