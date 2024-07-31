@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+.navbar {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.navbar-brand, .nav-link {
+    color: #fff !important;
+}
+.nav-link:hover {
+    color: #f8f9fa !important;
+    text-decoration: underline; 
+}
+.wrapper_home{
+	height: 100vh;
+	overflow: hidden;
+	background-image: url('https://realestatemarket.com.mx/images/2022/01-enero/1801/turismo-internacional-se-recuperara-2024-g.jpg'); 
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+.container {
+    margin-top: 60px auto 0;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 960px; 
+	color: #fff;
+	background: rgba(0, 0, 0, 0.5);
+}
