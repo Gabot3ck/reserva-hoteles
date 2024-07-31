@@ -13,38 +13,39 @@
 <body>
 	<nav th:replace="./layout/plantilla :: navbar" />
 
-	<div>
-		<h1>Crear Reservas</h1>
+	<div class="container container_crear_clientes mt-5">
+		<h1 class="mb-4 text-dark">Crear Reserva</h1>
 
 		<form th:action="@{/reservas/guardar}" th:object="${reserva}" method="post">
-			<div>
-				<label for="cliente">Cliente:</label>
-				<select id="cliente" th:field="*{cliente.id}">
+			<div class="form-group">
+				<label class="text-dark" for="cliente">Cliente:</label>
+				<select id="cliente" th:field="*{cliente.id}" class="form-control">
 					<option th:each="cliente: ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}">
 					</option>
 				</select>
 			</div>
-			<div>
-				<label for="hotel">Hotel:</label>
-				<select id="hotel" th:field="*{hotel.id}">
-					<option th:each="hotel: ${hoteles}" th:value="${hotel.id}" th:text="${hotel.nombre}"></option>
+			<div class="form-group">
+				<label class="text-dark" for="hotel">Hotel:</label>
+				<select id="hotel" th:field="*{hotel.id}" class="form-control">
+					<option th:each="hotel: ${hoteles}" th:value="${hotel.id}" th:text="${hotel.nombre}">
+					</option>
 				</select>
 			</div>
-			<div>
-				<label for="fechaInicio">Fecha de inicio:</label>
-				<input type="datetime-local" id="fechaInicio" th:field="*{fechaInicio}" required />
+			<div class="form-group">
+				<label class="text-dark" for="fechaInicio">Fecha de inicio:</label>
+				<input type="datetime-local" id="fechaInicio" th:field="*{fechaInicio}" class="form-control" required />
 			</div>
-			<div>
-				<label for="fechaFin">Fecha final:</label>
-				<input type="datetime-local" id="fechaFin" th:field="*{fechaFin}" required />
+			<div class="form-group">
+				<label class="text-dark" for="fechaFin">Fecha final:</label>
+				<input type="datetime-local" id="fechaFin" th:field="*{fechaFin}" class="form-control" required />
 			</div>
-			<input type="submit" class="btn btn-primary" value="Crear Reserva" />
+			<div class="form-group">
+				<input type="submit" class="btn btn-primary" value="Crear Reserva" />
+			</div>
 		</form>
 
+		<a href="/reservas" class="btn btn-link mt-3">Volver a la lista de reservas</a>
 	</div>
-
-
-	<a href="/reservas">Volver a la lista clientes</a>
 
 	<!-- Bootstrap JS and dependencies -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
