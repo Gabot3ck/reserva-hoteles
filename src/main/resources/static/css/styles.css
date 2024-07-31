@@ -31,3 +31,22 @@ body {
 	color: #fff;
 	background: rgba(0, 0, 0, 0.5);
 }
+.container_crear_clientes{
+	max-width: 600px;
+	margin: 30px auto 0;
+	background: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-group label {
+    font-weight: bold;
+}
+.btn-primary {
+    width: 100%;
+}
+.btn-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
