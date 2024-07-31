@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Crear hotel</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<nav th:replace="./layout/plantilla :: navbar" />
+
+	<h1>Crear Hotel</h1>
+
+	<form th:action="@{/hoteles/guardar}" th:object="${hotel}" method="post">
+		<div>
+			<label for="nombre">Nombre</label>
+			<input type="text" id="Nombre" th:field="*{nombre}" placeholder="Ingrese el nombre" />
+		</div>
+		<div>
+			<label for="direccion">Direccion</label>
+			<input type="text" id="direccion" th:field="*{direccion}" placeholder="Ingrese una dirección" />
+		</div>
+		<div>
+			<label for="ciudad">Ciudad</label>
+			<input type="text" id="ciudad" th:field="*{ciudad}" placeholder="Ingrese una ciudad" />
+		</div>
+		<div>
+			<input type="submit" value="Crear hotel" />
+		</div>
+	</form>
+
+	<a href="/hoteles">Volver a la lista hoteles</a>
+
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

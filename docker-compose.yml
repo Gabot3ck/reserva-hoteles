@@ -1,0 +1,46 @@
+version: "3"
+services:
+
+  spring-webapp-image:
+    image: spring-webapp-image
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring-app-container
+    ports: 
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:mysql://mysql_database:3306/reserva_hotel?createDatabaseIfNotExist=true&serverTimezone=UTC
+      DB_USER_NAME: root
+      DB_PASSWORD: 881014
+    networks:
+      - spring-network
+    depends_on: 
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    image: mysql
+    container_name: mysql_database
+    environment:
+      MYSQL_ROOT_PASSWORD: 881014
+      MYSQL_DATABASE: reserva_hotel
+      MYSQL_USER: adm_reserva
+      MYSQL_PASSWORD: 310718
+    restart: always
+    ports:
+      - "3307:3306"
+    networks: 
+      - spring-network
+    volumes:
+      - mysql-volume:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+
+networks:
+  spring-network:
+
+volumes:
+  mysql-volume:

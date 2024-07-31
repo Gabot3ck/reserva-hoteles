@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Transferir reservas</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	
+	<nav th:replace="./layout/plantilla :: navbar" />
+
+	<h1>Transferir Reservas</h1>
+	
+	<form th:action="@{/reservas/transferir}"  method="post">
+		<input type="hidden" th:value="${reserva.id}" name="idReserva" />
+		<div>
+			<label for="clienteDestino">Cliente:</label>
+			<select id="clienteDestino" name="clienteDestino">
+				<option th:each="cliente: ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}">
+				</option>
+			</select>
+		</div>
+		<input type="submit" class="btn btn-primary" value="Transferir" />
+	</form>
+
+
+
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

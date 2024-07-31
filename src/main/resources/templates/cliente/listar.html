@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ver clientes</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	
+	<nav th:replace="./layout/plantilla :: navbar" />
+
+	<h1>Listar Clientes</h1>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Email</th>
+				<th>Ver</th>
+				<th>Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="cliente: ${clientes}">
+				<td th:text="${cliente.id}"></td>
+				<td th:text="${cliente.nombre}"></td>
+				<td th:text="${cliente.email}"></td>
+				<td>
+					<a th:href="@{/clientes/{id}(id=${cliente.id})}" class="btn btn-success">Ver</a>
+				</td>
+				<td>
+					<a th:href="@{/clientes/eliminar/{id}(id=${cliente.id})}" class="btn btn-danger">Eliminar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/clientes/nuevo" class="btn btn-primary my-3" >Crear nuevo cliente</a>
+
+
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ver reservas</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	
+	<nav th:replace="./layout/plantilla :: navbar" />
+
+	<h1>Listar Reservas</h1>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Cliente</th>
+				<th>Hotel</th>
+				<th>Fecha Inicio</th>
+				<th>Fecha Fin</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="reserva: ${reservas}">
+				<td th:text="${reserva.id}"></td>
+				<td th:text="${reserva.cliente.nombre}"></td>
+				<td th:text="${reserva.hotel.nombre}"></td>
+				<td th:text="${reserva.fechaInicio}"></td>
+				<td th:text="${reserva.fechaFin}"></td>
+				<td>
+					<a th:href="@{/reservas/{id}(id=${reserva.id})}">Ver</a>
+					<a th:href="@{/reservas/transferir/{id}(id=${reserva.id})}">Transferir</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/reservas/nueva" class="btn btn-primary my-3" >Crear nueva reserva</a>
+
+
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
