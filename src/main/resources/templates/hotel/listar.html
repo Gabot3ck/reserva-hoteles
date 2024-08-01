@@ -13,35 +13,38 @@
 <body>
 	<nav th:replace="./layout/plantilla :: navbar" />
 
-	<h1>Listar Hoteles</h1>
+	<div class="container mt-5">
+		<h1 class="mb-4">Listar Hoteles</h1>
 
-	<table border="1">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Nombre</th>
-				<th>Dirección</th>
-				<th>Ciudad</th>
-				<th>Ver</th>
-				<th>Eliminar</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="hotel: ${hoteles}">
-				<td th:text="${hotel.id}"></td>
-				<td th:text="${hotel.nombre}"></td>
-				<td th:text="${hotel.direccion}"></td>
-				<td th:text="${hotel.ciudad}"></td>
-				<td>
-					<a th:href="@{/hoteles/{id}(id=${hotel.id})}" class="btn btn-success">Ver</a>
-				</td>
-				<td>
-					<a th:href="@{/hoteles/eliminar/{id}(id=${hotel.id})}" class="btn btn-danger">Eliminar</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<a href="/hoteles/nuevo" class="btn btn-primary my-3" >Crear nuevo Hotel</a>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Dirección</th>
+					<th>Ciudad</th>
+					<th>Ver</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="hotel: ${hoteles}">
+					<td th:text="${hotel.id}"></td>
+					<td th:text="${hotel.nombre}"></td>
+					<td th:text="${hotel.direccion}"></td>
+					<td th:text="${hotel.ciudad}"></td>
+					<td>
+						<a th:href="@{/hoteles/{id}(id=${hotel.id})}" class="btn btn-success btn-sm">Ver</a>
+					</td>
+					<td>
+						<a th:href="@{/hoteles/eliminar/{id}(id=${hotel.id})}"
+							class="btn btn-danger btn-sm">Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="/hoteles/nuevo" class="btn btn-primary mt-3">Crear nuevo Hotel</a>
+	</div>
 
 
 	<!-- Bootstrap JS and dependencies -->
